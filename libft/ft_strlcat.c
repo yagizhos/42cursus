@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhos <yhos@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 19:03:03 by yhos              #+#    #+#             */
-/*   Updated: 2023/01/09 14:20:17 by yhos             ###   ########.fr       */
+/*   Created: 2023/01/06 01:16:32 by yhos              #+#    #+#             */
+/*   Updated: 2023/01/09 18:29:08 by yhos             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	if (c > 47 && c < 58)
-		return (1);
-	return (0);
+	size_t	i;
+	size_t	j;
+
+	if (!dstsize)
+		return (ft_strlen(src));
+	i = 0;
+	while (dst[i] && i < dstsize)
+		i++;
+	j = -1;
+	while (src[++j] && i + j + 1 < dstsize)
+		dst[i + j] = src[j];
+	if (i != dstsize)
+		dst[i + j] = 0;
+	return (i + ft_strlen(src));
 }

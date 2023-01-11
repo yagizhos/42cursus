@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhos <yhos@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 19:03:03 by yhos              #+#    #+#             */
-/*   Updated: 2023/01/09 14:20:17 by yhos             ###   ########.fr       */
+/*   Created: 2023/01/05 19:17:17 by yhos              #+#    #+#             */
+/*   Updated: 2023/01/09 20:11:06 by yhos             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (c > 47 && c < 58)
-		return (1);
-	return (0);
+	t_list	*temp;
+
+	if (lst)
+	{
+		if (*lst)
+		{
+			temp = ft_lstlast(*lst);
+			temp->next = new;
+		}
+		else
+			*lst = new;
+	}
 }
